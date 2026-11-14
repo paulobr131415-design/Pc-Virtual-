@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu PC Virtual</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#101827;color:white}
+.desktop{height:100vh;padding:25px;background:linear-gradient(135deg,#123b65,#172554,#050816)}
+h2{margin-top:0}
+.apps{display:grid;grid-template-columns:repeat(2,90px);gap:25px}
+.app{padding:15px;text-align:center;cursor:pointer;border-radius:12px}
+.app:hover{background:#ffffff30}
+.app span{font-size:38px;display:block}
+.taskbar{position:fixed;bottom:0;width:100%;height:55px;background:#111827dd;display:flex;align-items:center;justify-content:center;gap:25px}
+button{background:#2563eb;color:white;border:0;padding:10px 18px;border-radius:8px}
+#clock{position:fixed;right:15px;bottom:65px}
+#window{display:none;position:absolute;top:20%;left:10%;width:80%;height:45%;background:#e5e7eb;color:#111;border-radius:12px;padding:20px}
+#window button{float:right}
+</style>
+</head>
+<body>
+<div class="desktop">
+<h2>💻 Meu PC Virtual</h2>
+<div class="apps">
+<div class="app" onclick="openApp('Navegador')"><span>🌐</span>Navegador</div>
+<div class="app" onclick="openApp('Arquivos')"><span>📁</span>Arquivos</div>
+<div class="app" onclick="openApp('Jogos')"><span>🎮</span>Jogos</div>
+<div class="app" onclick="openApp('Configurações')"><span>⚙️</span>Configurações</div>
+<div class="app" onclick="openApp('Bloco de Notas')"><span>📝</span>Notas</div>
+<div class="app" onclick="openApp('Sobre')"><span>💻</span>Meu PC</div>
+</div>
+<div id="clock"></div>
+<div id="window">
+<button onclick="closeApp()">Fechar ✖</button>
+<h2 id="appTitle"></h2>
+<p>Bem-vindo ao seu PC virtual!</p>
+</div>
+</div>
+<div class="taskbar">🪟 Meu PC Virtual</div>
+<script>
+function openApp(name){
+document.getElementById('window').style.display='block';
+document.getElementById('appTitle').innerText=name;
+}
+function closeApp(){
+document.getElementById('window').style.display='none';
+}
+function updateClock(){
+document.getElementById('clock').innerText=new Date().toLocaleTimeString('pt-BR');
+}
+setInterval(updateClock,1000);
+updateClock();
+</script>
+</body>
+</html>
